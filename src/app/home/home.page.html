@@ -1,0 +1,36 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="addTarefa()">
+        <ion-icon slot="start" name="add"></ion-icon>
+        Cadastrar
+      </ion-button>
+    </ion-buttons>
+    <ion-title>
+      Tarefas
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list *ngFor="let item of dados"> 
+
+    <ion-item-sliding>
+      <ion-item-options side="start">
+        <ion-item-option color="danger" (click)="dell(item.id)">Delete</ion-item-option>
+      </ion-item-options>
+
+      <ion-item (click)="marcar(item.id,item.status)">
+        <ion-label>{{item.nome}}</ion-label>
+        <ion-checkbox *ngIf="item.status == 1" checked slot="end"></ion-checkbox>
+        <ion-checkbox *ngIf="item.status == 0" slot="end"></ion-checkbox>
+      </ion-item>
+
+      <ion-item-options side="end">
+        <ion-item-option (click)="edit(item.nome,item.id,item.status)">Edit</ion-item-option>
+      </ion-item-options>
+
+    </ion-item-sliding>
+
+  </ion-list>
+</ion-content>
